@@ -75,14 +75,16 @@ function makeControllers(main) {
 
 	let controllers = {
 		'about': require("./about")(main),
+		'account': require("./account")(main),
 		'server': require('./server')(main)
 	};
 
 
 	return wrapControllers({
 		'about.about_get': controllers.about.about,
-		'server.time_get': controllers.server.time
-
+		'server.time_get': controllers.server.time,
+		'account.search_get': controllers.account.search,
+		'account.insert_put': controllers.account.insert
 	}, main.announce);
 }
 

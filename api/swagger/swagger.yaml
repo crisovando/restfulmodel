@@ -11,6 +11,35 @@ produces:
   - application/json
 
 paths:
+  /account:
+    put:
+      tags:
+        - account
+      summary: Inserta busquedas por email
+      x-swagger-router-controller: account.insert
+      parameters:
+        - name: parametros
+          in: body
+          required: true
+          schema:
+              $ref: '#/definitions/parameters'
+      responses:
+        '200':
+          description: devuelve las cuentas
+    get:
+      tags:
+        - account
+      summary: Obtiene busquedas por email
+      x-swagger-router-controller: account.search
+      parameters:
+        - name: mail
+          in: query
+          required: true
+          type: string
+      responses:
+        '200':
+          description: devuelve las cuentas
+
   /server/time:
     get:
       tags:
@@ -46,4 +75,15 @@ definitions:
       version:
         type: string
       name:
+        type: string
+  parameters:
+    type: object
+    properties:
+      mail:
+          type: string
+      min:
+        type: string
+      cost:
+        type: string
+      zonas:
         type: string
