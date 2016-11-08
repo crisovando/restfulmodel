@@ -8,26 +8,30 @@ function Account(main) {
 
 	return {
     'insert': (req, res, next)=> {
-			debug(".account called");
+			debug(".account.insert called");
 
       let parametros = req.swagger.params.parametros ? req.swagger.params.parametros.value : null;
 
-      let doc = main.libs.account.insert(parametros);
-
-			res.json({
-        'objectCreated': doc
-			})
+      main.libs.account.insert(parametros)
+								.then(busqueda => {
+									res.json(busqueda);
+								})
+								.cath(err => {
+									next(err);
+								});
 		},
     'search': (req, res, next)=> {
 			debug(".accout.search called");
 
       let mail = req.swagger.params.mail ? req.swagger.params.mail.value : null;
-			let busquedas = main.libs.account.search(mail);
-			
-			console.log('busquedas ' + busquedas);
-			res.json({
-				'mail': busquedas
-			})
+			main.libs.account.search(mail)
+								.then(busquedas => {
+									res.json(busquedas);
+								})
+								.cath(err => {
+									debug(".account.search.error: " + err);
+									next(err);
+								});
 		}
 
 	};
