@@ -16,7 +16,7 @@ function Account(main) {
 								.then(busqueda => {
 									res.json(busqueda);
 								})
-								.cath(err => {
+								.catch(err => {
 									next(err);
 								});
 		},
@@ -28,7 +28,7 @@ function Account(main) {
 								.then(busquedas => {
 									res.json(busquedas);
 								})
-								.cath(err => {
+								.catch(err => {
 									debug(".account.search.error: " + err);
 									next(err);
 								});
