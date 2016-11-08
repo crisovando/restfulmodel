@@ -39,6 +39,19 @@ paths:
       responses:
         '200':
           description: devuelve las cuentas
+    delete:
+      tags:
+        - account
+      summary: elimina busqueda
+      x-swagger-router-controller: account.remove
+      parameters:
+        - name: mail
+          in: query
+          required: true
+          type: string
+      responses:
+        '200':
+          description: retorna elemento eliminado
 
   /server/time:
     get:

@@ -17,7 +17,7 @@ function Account(main) {
 									res.json(busqueda);
 								})
 								.catch(err => {
-									next(err);
+									return next(err);
 								});
 		},
     'search': (req, res, next)=> {
@@ -30,6 +30,18 @@ function Account(main) {
 								})
 								.catch(err => {
 									debug(".account.search.error: " + err);
+									next(err);
+								});
+		},
+		'remove': (req, res, next) => {
+			let mail = req.swagger.params.mail ? req.swagger.params.mail.value : null;
+			debug(".account.remove: " + mail);
+			main.libs.account.remove(mail)
+								.then(doc => {
+									res.json(doc);
+								})
+								.catch(err => {
+
 									next(err);
 								});
 		}

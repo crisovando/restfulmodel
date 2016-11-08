@@ -84,7 +84,8 @@ function makeControllers(main) {
 		'about.about_get': controllers.about.about,
 		'server.time_get': controllers.server.time,
 		'account.search_get': controllers.account.search,
-		'account.insert_put': controllers.account.insert
+		'account.insert_put': controllers.account.insert,
+		'account.remove_delete': controllers.account.remove
 	}, main.announce);
 }
 
