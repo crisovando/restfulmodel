@@ -22,7 +22,7 @@ paths:
           in: body
           required: true
           schema:
-              $ref: '#/definitions/parameters'
+              $ref: '#/definitions/busqueda'
       responses:
         '200':
           description: devuelve las cuentas
@@ -89,14 +89,16 @@ definitions:
         type: string
       name:
         type: string
-  parameters:
+  busqueda:
     type: object
     properties:
       mail:
-          type: string
-      min:
         type: string
-      cost:
+      zonaDestino:
         type: string
-      zonas:
+      fechaDesde:
         type: string
+      fechaHasta:
+        type: string
+      adultos:
+        type: number
